@@ -1,0 +1,173 @@
+@import "../themes/theme";
+
+body {
+  background-color: var(--bg-color);
+  color: var(--form-color);
+  font-family: $body-font;
+  max-height: 100vh;
+}
+
+h1 {
+  font-family: $header-font;
+  color: var(--text-color);
+  margin: auto;
+}
+
+h2 {
+  font-family: $header-font;
+  color: var(--header-fill);
+  list-style-type: none;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1px var(--header-color);
+  letter-spacing: 3px;
+}
+
+ul {
+  font-family: $header-font;
+  color: var(--header-fill);
+  font-size: 2em;
+  list-style-type: none;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1px var(--header-color);
+  letter-spacing: 3px;
+  li {
+    cursor: pointer;
+    width: min-content;
+    white-space: nowrap;
+    &.focus {
+      color: var(--header-color);
+    }
+  }
+}
+
+p {
+  padding: 1em 0em;
+  color: var(--form-color);
+}
+
+// This is the part for dashboard
+
+.Counter {
+  // height: 20vw;
+  font: $body-font;
+  font-size: 2vh;
+  color: var(--form-color);
+  .Sum {
+    font-family: $header-font;
+    color: var(--header-fill);
+    font-size: 5em;
+    list-style-type: none;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 1px var(--header-color);
+    letter-spacing: 3px;
+  }
+}
+
+// .Pie {
+//   border: 2px solid red;
+// }
+
+//Styling of queue tiles
+
+.Tile_Queue,
+.Tile_Serving {
+  margin: 0.5em;
+  padding: 0.5em;
+  text-align: center;
+
+  p {
+    padding: 0;
+    padding-bottom: 3px;
+  }
+}
+
+.Tile_Queue {
+  font-size: 2vh;
+}
+
+.Tile_Serving {
+  text-align: left;
+  border-radius: 5px;
+  border: 1px solid var(--header-color);
+  background-color: var(--header-fill);
+  backdrop-filter: blur(5px);
+}
+
+//Styling stock labels
+
+.Display_None {
+  display: none;
+}
+
+.Stock {
+  filter: blur(5px) brightness(50%);
+}
+
+.Unavail {
+  filter: blur(1px) grayscale(100%);
+}
+
+.Stock_Text {
+  position: absolute;
+  width: 100%;
+  padding: 0em 1em;
+  color: var(--form-color);
+  font-size: 0.9vw;
+  white-space: nowrap;
+  border-radius: 5px;
+  border: 1px solid var(--header-color);
+  background-color: var(--header-fill);
+  backdrop-filter: blur(5px);
+  height: 100%;
+}
+
+.ChartsManager canvas {
+  margin: auto;
+}
+
+.Tile_Bartenders {
+  border-radius: 5px;
+  border: 1px solid var(--header-color);
+  background-color: var(--header-fill);
+  backdrop-filter: blur(5px);
+  padding-bottom: 1em;
+  margin-bottom: 16px;
+  p {
+    padding: 0;
+  }
+}
+
+//loader on dashboard
+
+.Loader {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.Position_Grid {
+  background-image: url("../../images/grid.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  pointer-events: none;
+  width: 100%;
+  height: 35vh;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  opacity: 0.2;
+}
+
+.QueueList {
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.Waiting_Customers {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  height: 100%;
+}

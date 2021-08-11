@@ -1,0 +1,198 @@
+@import "../themes/theme";
+.Plus,
+.Minus,
+.PlaceOrderButton {
+  font-family: $header-font;
+  color: var(--header-fill);
+  list-style-type: none;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1.5px var(--header-color);
+  background: none;
+  font-size: 6em;
+  border: none;
+}
+.Plus:active,
+.Minus:active {
+  color: var(--header-color);
+}
+
+////TODO:orders
+
+.Order {
+  // background-color: red;
+  height: 200%;
+  width: 30%;
+  position: relative;
+  z-index: 1;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.PlaceOrderButton {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 2.6em;
+  color: var(--accent-fill);
+  -webkit-text-stroke: 1.5px var(--accent-color);
+  letter-spacing: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  transform-origin: bottom;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.8s;
+  &.disable {
+    -webkit-text-stroke: 1.5px grey;
+  }
+  &.flipped {
+    transform: translateX(-50%) rotateX(180deg);
+  }
+}
+.orderNumber {
+  color: var(--header-fill);
+  -webkit-text-stroke: 0.05px var(--header-color);
+  letter-spacing: 3px;
+  font-size: 2.6em;
+  position: absolute;
+  transform: translateX(-50%);
+  // transform: translateX(-50%) rotateX(180deg);
+  left: 50%;
+  transform-origin: bottom;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  user-select: none;
+  &:nth-of-type(1) {
+    top: -60%;
+  }
+  &:nth-of-type(2) {
+    top: -90%;
+  }
+  &:nth-of-type(3) {
+    top: -120%;
+  }
+  &:nth-of-type(4) {
+    top: -150%;
+  }
+  &.reveal {
+    transform: translateX(-50%);
+  }
+}
+// .Queue {
+//   color: var(--form-color);
+//   transform: rotateX(180deg);
+// }
+// .Inner_Order {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   text-align: center;
+//   transition: transform 0.8s;
+//   transform-style: preserve-3d;
+//   &.flipped {
+//     transform: rotateX(180deg);
+//   }
+// }
+
+// .PlaceOrder,
+// .Queue {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   -webkit-backface-visibility: hidden; /* Safari */
+//   backface-visibility: hidden;
+// }
+
+/* Do an vertical flip when you move the mouse over the flip box container */
+// .Order:hover .Inner_Order {
+//   transform: rotateX(180deg);
+// }
+//FORM BUTTONS
+
+.Card_Pay,
+.MobilePay {
+  width: 100%;
+  height: 2em;
+  margin-top: 1em;
+  border-radius: 2px;
+  border: none;
+  font-family: $body-font;
+  position: relative;
+}
+.Card_Pay {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 65%;
+    background-image: url("../assets/card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.MobilePay {
+  background-color: #5a78fe;
+  color: white;
+}
+
+//Theme toggle button
+
+.Theme_Toggle {
+  width: 3em;
+  height: 3em;
+  background: none;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  right: 2em;
+  bottom: 2em;
+}
+
+.Theme_Toggle_Sun {
+  background-image: var(--theme-icon-sun);
+}
+
+.Theme_Toggle_Moon {
+  background-image: var(--theme-icon-moon);
+}
+
+//Dashboard buttons
+
+.Manager_Button {
+  font-family: $body-font;
+  color: var(--form-color);
+  background: var(--header-fill);
+  border-radius: 5px;
+  border: 1px solid var(--header-color);
+  padding: 0.5em 1em;
+  position: absolute;
+  top: 50%;
+  transform: rotate(270deg) scale(1.5);
+  left: -2em;
+  &:active {
+    background-color: var(--accent-color);
+  }
+}
+
+// .Manager_Close {
+//   background: none;
+//   color: var(--header-color);
+//   border: none;
+//   font-size: 2em;
+//   font-family: $body-font;
+//   position: absolute;
+//   margin: 0.1em 0.5em;
+//   top: 0;
+//   right: 0;
+
+//   &:active {
+//     color: var(--accent-color);
+//   }
+// }

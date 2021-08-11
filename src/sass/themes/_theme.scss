@@ -1,0 +1,65 @@
+:root {
+  //dark variables
+  --d-bg-color: #0d0d0d;
+  --d-header-color: #bb98ef;
+  // --d-header-fill: rgba(187, 152, 239, 0.2);
+  --d-header-fill: rgba(240, 41, 230, 0.144);
+  --d-text-color: #fffbe4;
+  --d-form-color: #ffffff;
+  --d-form-fill: rgba(255, 255, 255, 0.7);
+  --d-accent-color: #85c37b;
+  --d-accent-fill: rgba(133, 195, 123, 0.2);
+  --d-invalid-accent-color: #ab2346;
+  --d-form-bg: rgba(1, 1, 1, 0.4);
+
+  //bright variables
+  --l-bg-color: #ffffff;
+  --l-header-color: #ffd993;
+  --l-header-fill: rgba(255, 217, 147, 0.2);
+  --l-text-color: gold;
+  --l-form-color: #2f1e07;
+  --l-form-fill: #1a1004;
+  --l-accent-color: rgb(0, 121, 0);
+  --l-accent-fill: rgb(0, 121, 0, 0.2);
+  --l-invalid-accent-color: rgb(156, 9, 156);
+  --l-form-bg: rgba(255, 217, 147, 0.2);
+}
+
+.Dark_Theme {
+  --bg-color: var(--d-bg-color);
+  --header-color: var(--d-header-color);
+  --header-fill: var(--d-header-fill);
+  --text-color: var(--d-text-color);
+  --form-color: var(--d-form-color);
+  --form-fill: var(--d-form-fill);
+  --form-bg: var(--d-form-bg);
+  --accent-color: var(--d-accent-color);
+  --accent-fill: var(--d-accent-fill);
+  --invalid-accent-color: var(--d-invalid-accent-color);
+  --theme-icon-moon: url("../../images/moon.svg");
+  --theme-icon-sun: url("../../images/sun.svg");
+  background-image: url("../../images/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.Light_Theme {
+  --bg-color: var(--l-bg-color);
+  --header-color: var(--l-header-color);
+  --header-fill: var(--l-header-fill);
+  --text-color: var(--l-text-color);
+  --form-color: var(--l-form-color);
+  --form-fill: var(--l-form-fill);
+  --form-bg: var(--l-form-bg);
+  --accent-color: var(--l-accent-color);
+  --accent-fill: var(--l-accent-fill);
+  --invalid-accent-color: var(--l-invalid-accent-color);
+  --theme-icon-moon: url("../../images/moon.svg");
+  --theme-icon-sun: url("../../images/sun.svg");
+  --bg-img: url("../../images/bglight.png");
+  background-image: url("../../images/bglight.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

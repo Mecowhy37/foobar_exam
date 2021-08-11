@@ -1,0 +1,62 @@
+img {
+  height: 250px;
+  width: 100%;
+  border: 1px solid white;
+}
+
+//Image Overlay for showing the amount of beers chosen
+
+.Image_Container {
+  position: relative;
+  width: 200px;
+  height: 300px;
+}
+
+.Image_Container .Amount_Block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.Animated_Amount {
+  position: absolute;
+  left: 43%;
+  opacity: 0;
+}
+
+.Image_Container:hover .Amount_Block {
+  display: block;
+  // background: rgba(0, 0, 0, 0.6);
+}
+
+.Image_Container:hover .Animated_Amount {
+  animation: jumpup 1s cubic-bezier(0.49, -0.08, 0.9, 1.42) 1 forwards;
+}
+
+.Amount_Block {
+  font-family: $header-font;
+  color: var(--header-fill);
+  list-style-type: none;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1.5px var(--header-color);
+  background: none;
+  font-size: 6em;
+  border: none;
+  text-align: center;
+}
+
+//keyframes animation for number showing up
+
+@keyframes jumpup {
+  0% {
+    opacity: 0;
+    transform: scale(1) translate(0, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
