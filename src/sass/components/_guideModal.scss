@@ -1,0 +1,37 @@
+.guideModal {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  border-radius: 4px;
+  letter-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em 7em 1.5em 7em;
+  white-space: nowrap;
+  h1 {
+    font-size: 2.5em;
+  }
+  p {
+    text-align: center;
+  }
+  button {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    border-radius: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 0 0.5em;
+    margin-top: 0.5em;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    h1 {
+      font-size: 1.3rem;
+      color: var(--accent-color);
+      padding: 0;
+    }
+  }
+}

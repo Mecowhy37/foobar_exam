@@ -2,7 +2,8 @@ import Order from "../Order";
 import BeerPreview from "../BeerPreview";
 import BeerList from "../BeerList";
 import Guests from "../Guests";
-import LiveChat from "../LiveChat";
+// import LiveChat from "../LiveChat";
+// import GuideModal from "../guideModal";
 import { useEffect, useState } from "react";
 import React from "react";
 
@@ -130,7 +131,7 @@ const Tablet = () => {
           setPayments([]);
           setForm(null);
           setOrders((prev) => [...prev, data.id]);
-          console.log(data);
+          console.log(orders);
         });
     } else {
       console.log("sth not payed");
@@ -141,10 +142,14 @@ const Tablet = () => {
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
-    fetch("https://pivobar.herokuapp.com/", { signal: signal })
+    fetch("https://pivobar.herokuapp.com/", {
+      signal: signal,
+      headers: { "Content-Type": "application/json" },
+    })
       .then((res) => res.json())
       .then((data) => {
         //UNDERSTAND IT BEFORE AN EXAM ! !
+        console.log(data);
         const noDoubles = data.taps.reduce((acc, current) => {
           const x = acc.find((item) => item.beer === current.beer);
           if (!x) {
@@ -153,6 +158,7 @@ const Tablet = () => {
             return acc;
           }
         }, []);
+        console.log(noDoubles);
         setBeers(noDoubles);
       });
     return function cleaup() {
@@ -242,9 +248,10 @@ const Tablet = () => {
             themeToggle(!theme);
           }}
         ></button>
-        <Order handlePosting={handlePosting} orders={orders} missing={missing} filled={filled} payments={payments} />
-        <LiveChat />
+        <Order handlePosting={handlePosting} orders={orders} missing={missing} filled={filled} />
+        {/* <LiveChat /> */}
       </div>
+      {/* <GuideModal /> */}
     </div>
   );
 };
