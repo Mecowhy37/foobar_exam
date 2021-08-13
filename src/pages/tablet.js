@@ -2,8 +2,9 @@ import Order from "../Order";
 import BeerPreview from "../BeerPreview";
 import BeerList from "../BeerList";
 import Guests from "../Guests";
-// import LiveChat from "../LiveChat";
-// import GuideModal from "../guideModal";
+import GuideModal from "../GuideModal";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import { useEffect, useState } from "react";
 import React from "react";
 
@@ -251,7 +252,8 @@ const Tablet = () => {
         <Order handlePosting={handlePosting} orders={orders} missing={missing} filled={filled} />
         {/* <LiveChat /> */}
       </div>
-      {/* <GuideModal /> */}
+      <ReactNotification />
+      <GuideModal />
     </div>
   );
 };
