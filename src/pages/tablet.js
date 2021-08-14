@@ -96,12 +96,6 @@ const Tablet = () => {
     });
   };
 
-  useEffect(() => {
-    if (payments.length > 0) {
-      displayNotification();
-    }
-  }, [payments]);
-
   const displayNotification = (payment = true) => {
     const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers!` : " ") : `you can place an order now`;
     const messageII = `Guest ${missing} need to pay before placing an order.`;
@@ -119,6 +113,14 @@ const Tablet = () => {
       },
     });
   };
+  useEffect(
+    (displayNotification) => {
+      if (payments.length > 0) {
+        displayNotification();
+      }
+    },
+    [payments]
+  );
 
   const handlePosting = () => {
     console.log("clicked");
