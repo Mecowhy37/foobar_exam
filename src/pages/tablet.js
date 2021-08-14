@@ -2,8 +2,8 @@ import Order from "../Order";
 import BeerPreview from "../BeerPreview";
 import BeerList from "../BeerList";
 import Guests from "../Guests";
-import GuideModal from "../GuideModal";
-import ReactNotification from "react-notifications-component";
+// import GuideModal from "../GuideModal";
+import ReactNotification, { store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -92,15 +92,36 @@ const Tablet = () => {
 
   const handlePayment = (index) => {
     setPayments((prev) => {
-      if (prev.includes(index)) {
-        return prev;
-      } else {
-        return [...prev, index];
-      }
+      return prev.includes(index) ? prev : [...prev, index];
+    });
+  };
+
+  useEffect(() => {
+    if (payments.length > 0) {
+      displayNotification();
+    }
+  }, [payments]);
+
+  const displayNotification = (payment = true) => {
+    const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers!` : " ") : `you can place an order now`;
+    const messageII = `Guest ${missing} need to pay before placing an order.`;
+    store.addNotification({
+      title: payment ? "Payment successful!" : "Payment missing",
+      message: payment ? messageI : messageII,
+      type: payment ? "success" : "warning",
+      insert: "top",
+      container: "bottom-left",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: payment ? 2500 : 5000,
+        onScreen: true,
+      },
     });
   };
 
   const handlePosting = () => {
+    console.log("clicked");
     if (!missing.length > 0) {
       let order = [];
       baskets.forEach((basket) => {
@@ -115,7 +136,6 @@ const Tablet = () => {
           return;
         }
       });
-      // console.log(order);
       const postData = JSON.stringify(order);
       fetch("https://pivobar.herokuapp.com/order", {
         method: "POST",
@@ -135,7 +155,7 @@ const Tablet = () => {
           console.log(orders);
         });
     } else {
-      console.log("sth not payed");
+      displayNotification(false);
       return;
     }
   };
@@ -159,7 +179,6 @@ const Tablet = () => {
             return acc;
           }
         }, []);
-        console.log(noDoubles);
         setBeers(noDoubles);
       });
     return function cleaup() {
@@ -253,7 +272,7 @@ const Tablet = () => {
         {/* <LiveChat /> */}
       </div>
       <ReactNotification />
-      <GuideModal />
+      {/* <GuideModal /> */}
     </div>
   );
 };

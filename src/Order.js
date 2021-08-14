@@ -8,7 +8,7 @@ const Order = ({ handlePosting, orders, missing, filled, payments }) => {
             </h1>
           ))
         : ""}
-      <button className={`PlaceOrderButton ${missing.length > 0 || filled.length === 0 ? "disable" : ""} `} onClick={() => handlePosting}>
+      <button className={`PlaceOrderButton ${missing.length > 0 || filled.length === 0 ? "disable" : ""} `} onClick={handlePosting}>
         Place Order
       </button>
     </div>
