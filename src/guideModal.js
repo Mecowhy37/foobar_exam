@@ -1,5 +1,4 @@
 const GuideModal = ({ setModal, setOrders, ready, setReady }) => {
-  console.log(ready);
   return (
     <div className="guideModal">
       {ready.length > 0 ? (
@@ -39,8 +38,6 @@ const GuideModal = ({ setModal, setOrders, ready, setReady }) => {
           </button>
         </>
       )}
-
-      {/*  */}
     </div>
   );
 };
