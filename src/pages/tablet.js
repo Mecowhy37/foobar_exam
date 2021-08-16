@@ -294,7 +294,7 @@ const Tablet = () => {
         {/* <LiveChat /> */}
       </div>
       <ReactNotification />
-      {/* {modal ? <guideModal setModal={setModal} setOrders={setOrders} ready={ready} setReady={setReady} /> : null} */}
+      {modal ? <GuideModal setModal={setModal} setOrders={setOrders} ready={ready} setReady={setReady} /> : null}
     </div>
   );
 };
