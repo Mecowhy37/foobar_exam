@@ -2,7 +2,7 @@ import Order from "../Order";
 import BeerPreview from "../BeerPreview";
 import BeerList from "../BeerList";
 import Guests from "../Guests";
-// import GuideModal from "../GuideModal";
+import GuideModal from "../GuideModal";
 import ReactNotification, { store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { useEffect, useState } from "react";
@@ -96,13 +96,15 @@ const Tablet = () => {
     });
   };
 
-  const displayNotification = (payment = true) => {
-    const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers!` : " ") : `you can place an order now`;
-    const messageII = payments.length > 0 ? `Guest ${missing} need to pay before placing an order.` : `You need to add beers to an order first.`;
+  const displayNotification = (payment = true, placement = null) => {
+    const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers before placing an order!` : " ") : `you can place an order now`;
+    const messageII = payments.length > 0 && placement === null ? `Guest ${missing} need to pay before placing an order.` : `You need to add beers to an order first.`;
+    const messageIII = placement ? `it will be ready in 10s!` : "";
+    console.log(placement);
     store.addNotification({
-      title: payment ? "Payment successful!" : "Payment missing",
-      message: payment ? messageI : messageII,
-      type: payment ? "success" : "warning",
+      title: payment ? "Payment successful!" : placement ? `Your order number is ${placement}` : "",
+      message: payment ? messageI : !placement ? messageII : messageIII,
+      type: payment ? "success" : placement ? "success" : "warning",
       insert: "top",
       container: "bottom-left",
       animationIn: ["animate__animated", "animate__fadeIn"],
@@ -151,6 +153,7 @@ const Tablet = () => {
           setPayments([]);
           setForm(null);
           setOrders((prev) => [...prev, data.id]);
+          displayNotification(false, data.id);
           console.log(orders);
         });
     } else {
@@ -285,7 +288,7 @@ const Tablet = () => {
         {/* <LiveChat /> */}
       </div>
       <ReactNotification />
-      {/* <GuideModal /> */}
+      <GuideModal />
     </div>
   );
 };
