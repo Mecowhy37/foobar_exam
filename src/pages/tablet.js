@@ -1,7 +1,7 @@
 import BeerList from "../BeerList";
 import BeerPreview from "../BeerPreview";
 import Guests from "../Guests";
-import GuideModal from "../GuideModal";
+import GuideModal from "../../src/GuideModal";
 import ReactNotification, { store } from "react-notifications-component";
 import Order from "../Order";
 import "react-notifications-component/dist/theme.css";
