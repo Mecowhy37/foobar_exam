@@ -98,7 +98,7 @@ const Tablet = () => {
 
   const displayNotification = (payment = true) => {
     const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers!` : " ") : `you can place an order now`;
-    const messageII = `Guest ${missing} need to pay before placing an order.`;
+    const messageII = payments.length > 0 ? `Guest ${missing} need to pay before placing an order.` : `You need to add beers to an order first.`;
     store.addNotification({
       title: payment ? "Payment successful!" : "Payment missing",
       message: payment ? messageI : messageII,
@@ -108,23 +108,20 @@ const Tablet = () => {
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: payment ? 2500 : 5000,
+        duration: payment ? 3000 : 5000,
         onScreen: true,
       },
     });
   };
-  useEffect(
-    (displayNotification) => {
-      if (payments.length > 0) {
-        displayNotification();
-      }
-    },
-    [payments]
-  );
+  useEffect(() => {
+    if (payments.length > 0) {
+      displayNotification();
+    }
+  }, [payments]);
 
   const handlePosting = () => {
     console.log("clicked");
-    if (!missing.length > 0) {
+    if (!missing.length > 0 && payments.length > 0) {
       let order = [];
       baskets.forEach((basket) => {
         if (basket.length > 0) {
@@ -166,12 +163,11 @@ const Tablet = () => {
     const abortController = new AbortController();
     const signal = abortController.signal;
     fetch("https://pivobar.herokuapp.com/", {
-      signal: signal,
+      // signal: signal,
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
-        //UNDERSTAND IT BEFORE AN EXAM ! !
         console.log(data);
         const noDoubles = data.taps.reduce((acc, current) => {
           const x = acc.find((item) => item.beer === current.beer);
@@ -182,6 +178,21 @@ const Tablet = () => {
           }
         }, []);
         setBeers(noDoubles);
+      })
+      .then(() => {
+        fetch("https://videogames-20c7.restdb.io/rest/foobar", {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "x-apikey": "6074094df592f7113340efe3",
+            "cache-control": "no-cache",
+          },
+          signal: signal,
+        })
+          .then((resPrice) => resPrice.json())
+          .then((data) => {
+            setPrices(data);
+          });
       });
     return function cleaup() {
       abortController.abort();
@@ -202,26 +213,26 @@ const Tablet = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-    fetch("https://videogames-20c7.restdb.io/rest/foobar", {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        "x-apikey": "6074094df592f7113340efe3",
-        "cache-control": "no-cache",
-      },
-      signal: signal,
-    })
-      .then((resPrice) => resPrice.json())
-      .then((data) => {
-        setPrices(data);
-      });
-    return function cleaup() {
-      abortController.abort();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+  //   const signal = abortController.signal;
+  //   fetch("https://videogames-20c7.restdb.io/rest/foobar", {
+  //     method: "get",
+  //     headers: {
+  //       "Content-Type": "application/json; charset=utf-8",
+  //       "x-apikey": "6074094df592f7113340efe3",
+  //       "cache-control": "no-cache",
+  //     },
+  //     signal: signal,
+  //   })
+  //     .then((resPrice) => resPrice.json())
+  //     .then((data) => {
+  //       setPrices(data);
+  //     });
+  //   return function cleaup() {
+  //     abortController.abort();
+  //   };
+  // }, []);
   return (
     <div className={`Grid_Container ${theme ? "Dark_Theme" : "Light_Theme"}`}>
       <div className="Position_Grid" />

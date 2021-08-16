@@ -1,4 +1,4 @@
-const Order = ({ handlePosting, orders, missing, filled, payments }) => {
+const Order = ({ handlePosting, orders, missing, filled }) => {
   return (
     <div className="Order">
       {orders.length > 0
