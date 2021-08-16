@@ -1,7 +1,7 @@
 import BeerList from "../BeerList";
 import BeerPreview from "../BeerPreview";
 import Guests from "../Guests";
-import guideModal from "../../src/GuideModal";
+import GuideModal from "../GuideModal";
 import ReactNotification, { store } from "react-notifications-component";
 import Order from "../Order";
 import "react-notifications-component/dist/theme.css";
@@ -294,7 +294,7 @@ const Tablet = () => {
         {/* <LiveChat /> */}
       </div>
       <ReactNotification />
-      {modal ? <guideModal setModal={setModal} setOrders={setOrders} ready={ready} setReady={setReady} /> : null}
+      {/* {modal ? <guideModal setModal={setModal} setOrders={setOrders} ready={ready} setReady={setReady} /> : null} */}
     </div>
   );
 };

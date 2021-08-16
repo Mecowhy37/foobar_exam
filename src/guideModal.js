@@ -1,4 +1,4 @@
-const guideModal = ({ setModal, setOrders, ready, setReady }) => {
+const GuideModal = ({ setModal, setOrders, ready, setReady }) => {
   return (
     <div className="guideModal">
       {ready.length > 0 ? (
@@ -42,4 +42,4 @@ const guideModal = ({ setModal, setOrders, ready, setReady }) => {
   );
 };
 
-export default guideModal;
+export default GuideModal;
