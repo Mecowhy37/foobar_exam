@@ -48,36 +48,27 @@
     transform: translateX(-50%) rotateX(180deg);
   }
 }
-.orderNumber {
-  color: var(--header-fill);
-  -webkit-text-stroke: 0.05px var(--header-color);
-  letter-spacing: 3px;
-  font-size: 2.6em;
+.numbersContainer {
   position: absolute;
-  transform: translateX(-50%);
-  // transform: translateX(-50%) rotateX(180deg);
-  left: 50%;
-  transform-origin: bottom;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: transform 0.8s;
-  user-select: none;
-  &:nth-of-type(1) {
-    top: -60%;
-  }
-  &:nth-of-type(2) {
-    top: -90%;
-  }
-  &:nth-of-type(3) {
-    top: -120%;
-  }
-  &:nth-of-type(4) {
-    top: -150%;
-  }
-  &.reveal {
-    transform: translateX(-50%);
+  width: 100%;
+  height: min-content;
+  // background-color: blue;
+  transform: translateY(-100%);
+  display: flex;
+  flex-direction: column-reverse;
+  .orderNumber {
+    color: var(--header-fill);
+    -webkit-text-stroke: 0.05px var(--header-color);
+    letter-spacing: 3px;
+    font-size: 2.6em;
+    transition: transform 0.8s;
+    user-select: none;
+    &.reveal {
+      transform: translateX(-50%);
+    }
   }
 }
+
 // .Queue {
 //   color: var(--form-color);
 //   transform: rotateX(180deg);

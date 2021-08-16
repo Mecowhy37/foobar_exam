@@ -19,6 +19,8 @@ const Tablet = () => {
   const [baskets, setBaskets] = useState([[], [], [], []]);
   const [payments, setPayments] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [modal, setModal] = useState(true);
+  const [ready, setReady] = useState([]);
   let beerPrice = prices.find((el) => el.name === beers[focus].beer);
   let filled = baskets.filter((el) => el.length > 0).map((el) => baskets.indexOf(el) + 1);
   let missing = filled.filter((el) => !payments.includes(el));
@@ -100,7 +102,6 @@ const Tablet = () => {
     const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers before placing an order!` : " ") : `you can place an order now`;
     const messageII = payments.length > 0 && placement === null ? `Guest ${missing} need to pay before placing an order.` : `You need to add beers to an order first.`;
     const messageIII = placement ? `it will be ready in 10s!` : "";
-    console.log(placement);
     store.addNotification({
       title: payment ? "Payment successful!" : placement ? `Your order number is ${placement}` : "",
       message: payment ? messageI : !placement ? messageII : messageIII,
@@ -122,7 +123,6 @@ const Tablet = () => {
   }, [payments]);
 
   const handlePosting = () => {
-    console.log("clicked");
     if (!missing.length > 0 && payments.length > 0) {
       let order = [];
       baskets.forEach((basket) => {
@@ -152,9 +152,14 @@ const Tablet = () => {
           setGuest(1);
           setPayments([]);
           setForm(null);
-          setOrders((prev) => [...prev, data.id]);
+          setOrders((prev) => {
+            setTimeout(() => {
+              setReady((prev) => [...prev, data.id]);
+              setModal(true);
+            }, 3000);
+            return [...prev, data.id];
+          });
           displayNotification(false, data.id);
-          console.log(orders);
         });
     } else {
       displayNotification(false);
@@ -253,11 +258,12 @@ const Tablet = () => {
         }}
         formFocus={(e) => {
           let index = e.target.dataset.index;
-          if (Number(form) === Number(index)) {
-            setForm(null);
-          } else {
-            setForm(index);
-          }
+          // if (Number(form) === Number(index)) {
+          //   setForm(null);
+          // } else {
+          //   setForm(index);
+          // }
+          setForm(Number(form) === Number(index) ? null : index);
         }}
         form={form}
         guest={guest}
@@ -288,7 +294,7 @@ const Tablet = () => {
         {/* <LiveChat /> */}
       </div>
       <ReactNotification />
-      <GuideModal />
+      {modal ? <GuideModal setModal={setModal} setOrders={setOrders} ready={ready} setReady={setReady} /> : null}
     </div>
   );
 };
