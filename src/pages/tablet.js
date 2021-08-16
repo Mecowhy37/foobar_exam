@@ -116,11 +116,14 @@ const Tablet = () => {
       },
     });
   };
-  useEffect(() => {
-    if (payments.length > 0) {
-      displayNotification();
-    }
-  }, [payments]);
+  useEffect(
+    (displayNotification) => {
+      if (payments.length > 0) {
+        displayNotification();
+      }
+    },
+    [payments]
+  );
 
   const handlePosting = () => {
     if (!missing.length > 0 && payments.length > 0) {
