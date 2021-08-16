@@ -101,7 +101,7 @@ const Tablet = () => {
   const displayNotification = (payment = true, placement = null) => {
     const messageI = payments.length < 4 ? (filled.length < 4 ? `${4 - filled.length} more guest${filled.length < 3 ? "s" : ""} can add beers before placing an order!` : " ") : `you can place an order now`;
     const messageII = payments.length > 0 && placement === null ? `Guest ${missing} need to pay before placing an order.` : `You need to add beers to an order first.`;
-    const messageIII = placement ? `it will be ready in 10s!` : "";
+    const messageIII = placement ? `it will be ready in 2 minutes!` : "";
     store.addNotification({
       title: payment ? "Payment successful!" : placement ? `Your order number is ${placement}` : "",
       message: payment ? messageI : !placement ? messageII : messageIII,
