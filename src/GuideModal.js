@@ -3,7 +3,7 @@ const GuideModal = ({ setModal, setOrders, ready, setReady }) => {
     <div className="guideModal">
       {ready.length > 0 ? (
         <>
-          <h1>{`Order${ready.length === 1 ? ` ${ready} is` : `'s ${ready.join(" and ")} are`} ready!`}</h1>
+          <h1>{`Order${ready.length === 1 ? ` ${ready} is` : `s ${ready.join(" and ")} are`} ready!`}</h1>
           <button
             className="ok"
             onClick={() => {

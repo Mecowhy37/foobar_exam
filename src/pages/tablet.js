@@ -112,7 +112,7 @@ const Tablet = () => {
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: payment ? 3000 : 5000,
+        duration: payment ? 3500 : 5000,
         onScreen: true,
       },
     });
