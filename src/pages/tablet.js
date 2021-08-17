@@ -107,8 +107,8 @@ const Tablet = () => {
       message: payment ? messageI : !placement ? messageII : messageIII,
       type: payment ? "success" : placement ? "success" : "warning",
       insert: "top",
-      // container: "bottom-left",
-      container: guest > 2 ? "top-left" : "top-right",
+      container: "bottom-left",
+      // container: guest > 3 ? "top-left" : "top-right",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
