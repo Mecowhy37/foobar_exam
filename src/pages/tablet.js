@@ -222,26 +222,6 @@ const Tablet = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const abortController = new AbortController();
-  //   const signal = abortController.signal;
-  //   fetch("https://videogames-20c7.restdb.io/rest/foobar", {
-  //     method: "get",
-  //     headers: {
-  //       "Content-Type": "application/json; charset=utf-8",
-  //       "x-apikey": "6074094df592f7113340efe3",
-  //       "cache-control": "no-cache",
-  //     },
-  //     signal: signal,
-  //   })
-  //     .then((resPrice) => resPrice.json())
-  //     .then((data) => {
-  //       setPrices(data);
-  //     });
-  //   return function cleaup() {
-  //     abortController.abort();
-  //   };
-  // }, []);
   return (
     <div className={`Grid_Container ${theme ? "Dark_Theme" : "Light_Theme"}`}>
       <div className="Position_Grid" />
