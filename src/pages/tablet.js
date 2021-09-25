@@ -121,11 +121,6 @@ const Tablet = () => {
     },
     [filled, missing, payments]
   );
-  // const paying = useCallback(() => {
-  //   if (payments.length > 0) {
-  //     displayNotification();
-  //   }
-  // }, [payments, displayNotification]);
 
   const handlePosting = useCallback(() => {
     if (!missing.length > 0 && payments.length > 0) {
